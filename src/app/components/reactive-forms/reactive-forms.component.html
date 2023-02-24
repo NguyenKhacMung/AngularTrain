@@ -1,0 +1,78 @@
+<div class="col-md-6 mx-auto">
+  <h4>Reactive-forms</h4>
+  <form class="mt-1 mb-1" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="title"
+      />
+      <div
+        *ngIf="
+          todoFormControl.title.invalid &&
+          (todoFormControl.title.dirty || todoFormControl.title.touched)
+        "
+        class="alert alert-danger p-1 mt-1"
+        role="alert"
+      >
+        <div *ngIf="todoFormControl.title.errors?.['required']">
+          Title is required.
+        </div>
+        <div *ngIf="todoFormControl.title.errors?.['minlength']">
+          Title must be at least 4 characters long.
+        </div>
+        <div *ngIf="todoFormControl.title.errors?.['forbiddenName']">
+          Title cannot be
+          {{todoFormControl.title.errors?.['forbiddenName'].value}}.
+        </div>
+      </div>
+      <!-- <pre>{{ todoFormControl.title.errors | json }}</pre> -->
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">User</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        formControlName="user"
+      />
+
+      <div
+        *ngIf="
+          todoFormControl.user.invalid &&
+          (todoFormControl.user.dirty || todoFormControl.user.touched)
+        "
+        class="alert alert-danger p-1 mt-1"
+        role="alert"
+      >
+        <div *ngIf="todoFormControl.user.errors?.['required']">
+          User is required.
+        </div>
+        <div *ngIf="todoFormControl.user.errors?.['minlength']">
+          User must be at least 4 characters long.
+        </div>
+        <div *ngIf="todoFormControl.user.errors?.['forbiddenName']">
+          User cannot be
+          {{todoFormControl.user.errors?.['forbiddenName'].value}}.
+        </div>
+      </div>
+    </div>
+    <!-- <pre>{{todoFormControl.user.errors | json }}</pre> -->
+    <div class="mb-3 form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="exampleCheck1"
+        formControlName="completed"
+      />
+      <label class="form-check-label" for="exampleCheck1">Completed</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="todoForm.invalid">
+      Submit
+    </button>
+  </form>
+</div>

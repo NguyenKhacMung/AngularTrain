@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "id": "0.33915396960302435",
+      "title": "vue",
+      "user": "324234",
+      "completed": false
+    },
+    {
+      "id": "0.2160835759147417",
+      "title": "react",
+      "user": "123",
+      "completed": null
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<nav>
+  <ul>
+    <li>
+      <a routerLink="template-driven-forms" routerLinkActive="active"
+        >Template-driven-forms</a
+      >
+    </li>
+    <li>|</li>
+    <li>
+      <a routerLink="reactive-forms" routerLinkActive="active"
+        >Reactive-forms</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+<hr />
+<app-todo
+  class="row justify-content-center"
+  *ngFor="let todo of todos"
+  [todo]="todo"
+  (deleteTodo)="onDeleteTodo($event)"
+  (onToggleTodoComplete)="onToggleTodoComplete($event)"
+>
+</app-todo>
+<div class="mb-3">
+  <label for="search" class="form-label">Search</label>
+  <input
+    type="text"
+    class="form-control"
+    id="search"
+    name="title"
+    [(ngModel)]="searchText"
+    (keyup)="searchTodo()"
+  />
+</div>

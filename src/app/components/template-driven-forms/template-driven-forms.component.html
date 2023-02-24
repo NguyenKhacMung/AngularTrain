@@ -1,0 +1,76 @@
+<div class="col-md-6 mx-auto">
+  <h4>Template-driven-forms</h4>
+  <form class="mt-1 mb-1" (ngSubmit)="onSubmit(todoForm)" #todoForm="ngForm">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        required
+        minlength="2"
+        appAsyncForbidenName
+        name="title"
+        #title="ngModel"
+        [(ngModel)]="todo.title"
+        
+      />
+      <!-- [ngModelOptions]="{ updateOn: 'blur' }" -->
+      <div
+        *ngIf="title.invalid && (title.dirty || title.touched)"
+        class="alert alert-danger p-1 mt-1"
+        role="alert"
+      >
+        <div *ngIf="title.errors?.['required']">Title is required.</div>
+        <div *ngIf="title.errors?.['minlength']">
+          Title must be at least 4 characters long.
+        </div>
+        <div *ngIf="title.errors?.['forbiddenName']">
+          Title cannot be
+          {{title.errors?.['forbiddenName'].value}}.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">User</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="user"
+        required
+        minlength="1"
+        appForbiddenName="a"
+        [(ngModel)]="todo.user"
+        #User="ngModel"
+      />
+      <div
+        *ngIf="User.invalid && (User.dirty || User.touched)"
+        class="alert alert-danger p-1 mt-1"
+        role="alert"
+      >
+        <div *ngIf="User.errors?.['required']">User is required.</div>
+        <div *ngIf="User.errors?.['minlength']">
+          User must be at least 4 characters long.
+        </div>
+        <div *ngIf="User.errors?.['forbiddenName']">
+          User cannot be {{User.errors?.['forbiddenName'].value}}.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="exampleCheck1"
+        name="completed"
+        [(ngModel)]="todo.completed"
+      />
+      <label class="form-check-label" for="exampleCheck1">Completed</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!todoForm.valid">
+      Submit
+    </button>
+  </form>
+</div>

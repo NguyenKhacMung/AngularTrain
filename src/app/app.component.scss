@@ -1,0 +1,10 @@
+a.active {
+  color: aquamarine !important;
+}
+
+:host > .alert {
+  background-color: #f44336 !important;
+  border-color: #f44336;
+  color: white;
+  padding: 0;
+}

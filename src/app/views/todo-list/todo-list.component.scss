@@ -1,0 +1,16 @@
+nav {
+  background-color: antiquewhite;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  li + li {
+    margin-left: 3rem;
+  }
+  li a.active {
+    color: red;
+  }
+}

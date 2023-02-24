@@ -1,0 +1,21 @@
+<div
+  class="form-check d-flex justify-content-between col-6"
+  [class.checked]="todo.completed"
+>
+  <input
+    class="form-check-input"
+    type="checkbox"
+    value=""
+    id="flexCheckDefault"
+    [checked]="todo.completed"
+    (change)="toggleTodoComplete(todo.id, !todo.completed)"
+  />
+  <label class="form-check-label" for="flexCheckDefault">
+    {{ todo.title }}
+  </label>
+  <label class="form-check-label" for="flexCheckDefault">
+    {{ todo.user }}
+  </label>
+
+  <button class="btn btn-primary" (click)="onDelete(todo.id)">Delete</button>
+</div>

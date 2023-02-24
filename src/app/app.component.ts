@@ -6,14 +6,4 @@ import { FormControl } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'demo-app-train';
-  name: string = '';
-  inputFormControl = new FormControl('');
-  addTodo() {
-    console.log(this.name);
-  }
-  onclick(){
-    console.log(this.inputFormControl);
-  }
-}
+export class AppComponent {}
